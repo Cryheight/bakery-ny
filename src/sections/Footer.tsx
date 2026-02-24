@@ -1,11 +1,12 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, ExternalLink } from 'lucide-react';
+import { MapPin, ExternalLink, Instagram, Facebook } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
+  // 1. Logic and Hooks must come BEFORE the return statement
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
@@ -63,87 +64,63 @@ export default function Footer() {
           }
         }
       );
-
     }, section);
 
     return () => ctx.revert();
   }, []);
 
+  // 2. The return statement provides the structure
   return (
     <footer 
-      ref={sectionRef}
-      className="relative bg-terracotta py-20 z-50"
+      id="footer" 
+      ref={sectionRef} 
+      className="bg-terracotta text-cream py-20 px-8 relative overflow-hidden"
     >
-      {/* Dot pattern background */}
-      <div className="absolute inset-0 dot-pattern" />
-
-      <div className="max-w-4xl mx-auto px-8 text-center relative">
-        {/* Headline */}
-        <h2 
-          ref={headlineRef}
-          className="headline-xl text-cream text-[clamp(48px,8vw,120px)] mb-12 will-change-transform"
-        >
-          TE ESPERAMOS
-        </h2>
-
-        {/* Hours & Address */}
-        <div 
-          ref={infoRef}
-          className="mb-12 will-change-transform"
-        >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
-            <div className="text-cream/90">
-              <p className="font-semibold text-lg mb-1">Horario</p>
-              <p>Lun–Sáb: 7:00 – 20:00</p>
-              <p>Domingo: 8:00 – 14:00</p>
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-end">
+        
+        {/* Left Side: Headline */}
+        <div>
+          <h2 
+            ref={headlineRef} 
+            className="headline-xl text-[clamp(40px,8vw,90px)] leading-[0.9] uppercase"
+          >
+            Visit us in <br /> Brooklyn
+          </h2>
+          
+          <div ref={infoRef} className="mt-12 space-y-6">
+            <div className="flex items-start gap-4">
+              <MapPin className="mt-1 flex-shrink-0" size={24} />
+              <p className="text-xl">
+                123 Brooklyn Ave, <br />
+                New York, NY 11201
+              </p>
             </div>
-            <div className="w-px h-16 bg-cream/30 hidden md:block" />
-            <div className="text-cream/90">
-              <p className="font-semibold text-lg mb-1">Dirección</p>
-              <p>1429 Myrtle Ave</p>
-              <p>Brooklyn, NY 11237</p>
+            <div className="flex gap-4 pt-4">
+              <a href="#" className="hover:opacity-70 transition-opacity"><Instagram size={28} /></a>
+              <a href="#" className="hover:opacity-70 transition-opacity"><Facebook size={28} /></a>
             </div>
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div 
-          ref={ctaRef}
-          className="flex flex-wrap justify-center gap-4 mb-16 will-change-transform"
-        >
-          <a 
-            href="tel:+17184521401"
-            className="btn-primary flex items-center gap-2"
-          >
-            Hacer pedido
-          </a>
-          <a 
-            href="https://maps.google.com/?q=1429+Myrtle+Ave+Brooklyn+NY"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline flex items-center gap-2"
-          >
-            <MapPin size={18} />
-            Ver mapa
-          </a>
-        </div>
+        {/* Right Side: Contact/CTA */}
+        <div ref={ctaRef} className="flex flex-col items-start md:items-end gap-8">
+          <div className="text-left md:text-right">
+            <h3 className="font-bold uppercase tracking-widest text-sm mb-2 opacity-60">Hours</h3>
+            <p className="text-lg">Mon–Fri: 7am — 8pm</p>
+            <p className="text-lg">Sat–Sun: 8am — 9pm</p>
+          </div>
 
-        {/* Legal */}
-        <div className="border-t border-cream/20 pt-8">
-          <p className="text-cream/60 text-sm">
-            © 2026 El Charro Bakery. Hecho con amor.
+          <a 
+            href="mailto:hola@elcharro.com" 
+            className="group flex items-center gap-3 bg-cream text-terracotta px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all"
+          >
+            Contact Us
+            <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
+          
+          <p className="text-sm opacity-40 mt-12">
+            © {new Date().getFullYear()} El Charro Bakery. All rights reserved.
           </p>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <a 
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cream/60 hover:text-cream transition-colors flex items-center gap-1 text-sm"
-            >
-              Instagram
-              <ExternalLink size={12} />
-            </a>
-          </div>
         </div>
       </div>
     </footer>
