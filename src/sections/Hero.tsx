@@ -176,9 +176,13 @@ export default function Hero() {
         </p>
 
         <div className="hero-cta mt-6 flex gap-4 justify-center">
-          <button className="btn-primary">Ver menú</button>
-          <button className="btn-outline">Hacer pedido</button>
-        </div>
+  <a href="#menu" className="btn-primary inline-block cursor-pointer">
+    View menu
+  </a>
+  <a href="#footer" className="btn-outline inline-block text-cream border-cream cursor-pointer">
+    Place an order
+  </a>
+</div>
       </div>
     </section>
   )
