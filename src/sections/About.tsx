@@ -96,7 +96,7 @@ export default function About() {
               1987
             </h2>
 
-            <p className="about-body mt-8 text-warm-brown text-lg md:text-xl leading-relaxed max-w-lg">
+            <p className="about-body mt-8 text-terracotta text-lg md:text-xl leading-relaxed max-w-lg">
               Empezamos con una hornada pequeña y un sueño grande: hacer pan que sepa a casa.
               Hoy seguimos amasando con las mismas recetas de familia en el corazón de Brooklyn.
             </p>
