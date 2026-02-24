@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 11 60% 49%;
+    --foreground: 42 67% 87%;
+    --card: 11 60% 49%;
+    --card-foreground: 42 67% 87%;
+    --popover: 11 60% 49%;
+    --popover-foreground: 42 67% 87%;
+    --primary: 72 48% 45%;
+    --primary-foreground: 42 67% 87%;
+    --secondary: 42 67% 87%;
+    --secondary-foreground: 11 60% 25%;
+    --muted: 11 40% 40%;
+    --muted-foreground: 42 50% 75%;
+    --accent: 72 48% 45%;
+    --accent-foreground: 42 67% 87%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 42 67% 87%;
+    --input: 11 40% 40%;
+    --ring: 72 48% 45%;
+    --radius: 1.75rem;
+    
+    --terracotta: #C84A32;
+    --cream: #F6E7C6;
+    --olive: #8FA83C;
+    --dark-brown: #2F1B18;
+    --warm-brown: #5C3F3A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--terracotta);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .text-terracotta {
+    color: var(--terracotta);
+  }
+  
+  .text-cream {
+    color: var(--cream);
+  }
+  
+  .text-olive {
+    color: var(--olive);
+  }
+  
+  .bg-terracotta {
+    background-color: var(--terracotta);
+  }
+  
+  .bg-cream {
+    background-color: var(--cream);
+  }
+  
+  .bg-olive {
+    background-color: var(--olive);
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-300;
+    background-color: var(--olive);
+    color: var(--cream);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(143, 168, 60, 0.35);
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 rounded-full font-semibold border-2 transition-all duration-300;
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--cream);
+    color: var(--terracotta);
+  }
+  
+  .card-rounded {
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .dot-pattern {
+    background-image: radial-gradient(circle, var(--cream) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    opacity: 0.12;
+  }
+  
+  .section-pinned {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .headline-xl {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .will-change-transform {
+    will-change: transform, opacity;
+  }
+}
