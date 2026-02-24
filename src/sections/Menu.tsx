@@ -27,6 +27,8 @@ const menuItems = [
 ]
 
 export default function Menu() {
+  return (
+    <section id="menu" className="relative py-20 bg-cream">
   const sectionRef = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
